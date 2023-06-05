@@ -4,11 +4,17 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message="L'email est deja utilise"
+ * )
  */
 class User implements UserInterface
 {
@@ -21,6 +27,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -76,6 +83,7 @@ class User implements UserInterface
 
     public function setPassword(string $password): self
     {
+        // $this->password = password_hash($password, PASSWORD_ARGON2I);
         $this->password = $password;
 
         return $this;
