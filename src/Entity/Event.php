@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
  */
@@ -24,6 +24,7 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="10", max="255", minMessage="Le contenu est trop court")
      */
     private $content;
 

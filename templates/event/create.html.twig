@@ -14,7 +14,13 @@
     {{ form_row(formEvent.image, {'attr': {'placeholder': "URL de l'image"}})}}
 
 
-    <button type="submit" class="btn btn-success">Ajouter</button>
+    <button type="submit" class="btn btn-success">
+       {% if editMode %}
+            Enregistrer les modifications
+       {% else %}
+            Ajouter
+       {% endif %}
+    </button>
 
     {{ form_end(formEvent) }}
 
