@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!{% endblock %}
+
+{% block body %}
+<section class="events">
+        <h2> {{ event.title }} </h2>
+        <div class="metadata">publie le {{ event.createdAt | date('d/m/Y')}}
+            a {{ event.createdAt | date('H:i')}}
+        </div>
+        <div class="content">
+            {{ event.content | raw }}
+        </div>
+</section>
+{% endblock %}

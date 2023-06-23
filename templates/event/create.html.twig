@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formEvent 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} Creer un evenement {% endblock %}
+
+{% block body %}
+
+    <h3>Creation d'un evenement </h3>
+
+    {{ form_start(formEvent)}}
+    {{ form_row(formEvent.title, {'attr': {'placeholder': "Titre de l'evenement"}})}}
+    {{ form_row(formEvent.content, {'attr': {'placeholder': "Contenu de l'evenement"}})}}
+    {{ form_row(formEvent.image, {'attr': {'placeholder': "URL de l'image"}})}}
+
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+
+    {{ form_end(formEvent) }}
+
+{% endblock %}
