@@ -11,5 +11,8 @@
         <div class="content">
             {{ event.content | raw }}
         </div>
+        <div class="image">
+            <img src="{{asset('uploads/' ~ event.images)}}" alt="img">
+        </div>
 </section>
 {% endblock %}

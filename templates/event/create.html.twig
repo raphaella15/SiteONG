@@ -11,8 +11,7 @@
     {{ form_start(formEvent)}}
     {{ form_row(formEvent.title, {'attr': {'placeholder': "Titre de l'evenement"}})}}
     {{ form_row(formEvent.content, {'attr': {'placeholder': "Contenu de l'evenement"}})}}
-    {{ form_row(formEvent.image, {'attr': {'placeholder': "URL de l'image"}})}}
-
+    {{ form_row(formEvent.images, {'label' : 'Choisir une image', 'attr': {'placeholder': '',}})}}
 
     <button type="submit" class="btn btn-success">
        {% if editMode %}

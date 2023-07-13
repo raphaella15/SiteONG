@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Images;
 use App\Form\EventType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventController extends AbstractController
 {
@@ -23,7 +24,7 @@ class EventController extends AbstractController
         return $this->render('event/index.html.twig', [
             'controller_name' => 'EventController',
             'events' => $events
-        ]);
+        ]); 
 
     }
 
@@ -42,6 +43,19 @@ class EventController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
         {
+            $images = $form->get('images')->getData();
+            foreach ($images as $image) {
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move(
+                    $this->getParameter(('uploads'),
+                    $fichier
+                    )
+                );
+
+                $img = new Images();
+                $img->setName($fichier);
+                $event->addImage($img);
+            } 
             if(!$event->getId()) 
             {
                 $event->setCreatedAt(new \DateTime());
