@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project index{% endblock %}
+{% block title %}Nos projets{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
+    <h1>Liste des projets</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>ProjectTitle</th>
-                <th>ProjectDetails</th>
-                <th>actions</th>
+                <th>Numero</th>
+                <th>Project</th>
+                <th>Details</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ project.projectTitle }}</td>
                 <td>{{ project.ProjectDetails }}</td>
                 <td>
-                    <a href="{{ path('app_admin_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_project_show', {'id': project.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">La liste est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_project_new') }}">Create new</a>
+    <a href="{{ path('app_admin_project_new') }}">Creer un nouveau projet</a>
 {% endblock %}

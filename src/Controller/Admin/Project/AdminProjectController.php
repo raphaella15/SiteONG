@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Project;
 
 use App\Entity\Project;
 use App\Form\ProjectType;

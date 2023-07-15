@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Activites{% endblock %}
+
+{% block body %}
+    <h1>Liste des activites</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Activites</th>
+                <th>Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td>{{ activity.activityName }}</td>
+                <td>{{ activity.activityDetails }}</td>
+                <td>
+                    <a href="{{ path('app_admin_activity_show', {'id': activity.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_activity_edit', {'id': activity.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">La liste est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_activity_new') }}">Creer une nouvelle activite</a>
+{% endblock %}

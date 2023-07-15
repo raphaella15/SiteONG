@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ActivityController!{% endblock %}
+{% block title %}Nos activites{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/DELL/projetSite/src/Controller/ActivityController.php'|file_link(0) }}">src/Controller/ActivityController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/DELL/projetSite/templates/activity/index.html.twig'|file_link(0) }}">templates/activity/index.html.twig</a></code></li>
-    </ul>
+<div class="container">
+    <h1>Liste des activites</h1>
+    <section class="activities">
+        {% for activity in activities %}
+            <h2> {{ activity.activityName }} </h2>
+            <div class="content">
+                {{ activity.activityDetails | raw }}
+            </div>
+            {# <a href="{{ path('activity_show', {'id': activity.id})}}" class="btn btn-primary">Lire la suite</a> #}
+        {% endfor %}
+    </section>
 </div>
 {% endblock %}

@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project{% endblock %}
+{% block title %}Nos Projets{% endblock %}
 
 {% block body %}
-    <h1>Project</h1>
+    <h1>Projet</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Numero</th>
                 <td>{{ project.id }}</td>
             </tr>
             <tr>
-                <th>ProjectTitle</th>
+                <th>Titre</th>
                 <td>{{ project.projectTitle }}</td>
             </tr>
             <tr>
-                <th>ProjectDetails</th>
+                <th>Details</th>
                 <td>{{ project.ProjectDetails }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_project_index') }}">back to list</a>
+    <a href="{{ path('app_admin_project_index') }}">Voir la liste</a>
 
-    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}">edit</a>
+    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}">Modifier</a>
 
     {{ include('admin_project/_delete_form.html.twig') }}
 {% endblock %}

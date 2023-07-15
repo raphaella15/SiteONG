@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjectController!{% endblock %}
+{% block title %}Nos Projets{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/DELL/projetSite/src/Controller/ProjectController.php'|file_link(0) }}">src/Controller/ProjectController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/DELL/projetSite/templates/project/index.html.twig'|file_link(0) }}">templates/project/index.html.twig</a></code></li>
-    </ul>
+<div class="container">
+    <h1>Liste des projets :</h1>
+    <section class="projects">
+        {% for project in projects %}
+            <h2> {{ project.projectTitle }} </h2>
+            <div class="content">
+                {{ project.projectDetails | raw }}
+            </div>
+            {# <a href="{{ path('project_show', {'id': project.id})}}" class="btn btn-primary">Lire la suite</a> #}
+        {% endfor %}
+    </section>
 </div>
 {% endblock %}

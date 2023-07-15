@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
+{% block title %}Evenements{% endblock %}
 
 {% block body %}
 <section class="events">
@@ -12,7 +12,8 @@
         <div class="content">
             {{ event.content | raw }}
         </div>
-        <a href="{{ path('event_show', {'id': event.id})}}" class="btn btn-primary">Lire la suite</a>
+        {# <a href="{{ path('event_show', {'id': event.id})}}" class="btn btn-primary">Lire la suite</a> #}
+        <hr>
     {% endfor %}
 </section>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Activites{% endblock %}
+
+{% block body %}
+    <h1>Activites</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Activites</th>
+                <td>{{ activity.activityName }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ activity.activityDetails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_activity_index') }}">Voir la liste</a>
+
+    <a href="{{ path('app_admin_activity_edit', {'id': activity.id}) }}">Modifier</a>
+
+    {{ include('admin_activity/_delete_form.html.twig') }}
+{% endblock %}

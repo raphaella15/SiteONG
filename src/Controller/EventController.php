@@ -32,45 +32,45 @@ class EventController extends AbstractController
      * @Route("/event/new", name="event_create")
      * @Route("/event/{id}/edit", name="event_edit")
      */
-    public function form(Event $event = null ,Request $request, EntityManagerInterface $manager) 
-    {
+    // public function form(Event $event = null ,Request $request, EntityManagerInterface $manager) 
+    // {
 
-        if(!$event)
-        {
-            $event = new Event();
-        }
-        $form = $this->createForm(EventType::class, $event);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
-            $images = $form->get('images')->getData();
-            foreach ($images as $image) {
-                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
-                $image->move(
-                    $this->getParameter(('uploads'),
-                    $fichier
-                    )
-                );
+    //     if(!$event)
+    //     {
+    //         $event = new Event();
+    //     }
+    //     $form = $this->createForm(EventType::class, $event);
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) 
+    //     {
+    //         $images = $form->get('images')->getData();
+    //         foreach ($images as $image) {
+    //             $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+    //             $image->move(
+    //                 $this->getParameter(('uploads'),
+    //                 $fichier
+    //                 )
+    //             );
 
-                $img = new Images();
-                $img->setName($fichier);
-                $event->addImage($img);
-            } 
-            if(!$event->getId()) 
-            {
-                $event->setCreatedAt(new \DateTime());
-            }
-            $manager->persist($event);
-            $manager->flush();
-            return $this->redirectToRoute('event_show', ['id' => $event->getId()]);
-        }
+    //             $img = new Images();
+    //             $img->setName($fichier);
+    //             $event->addImage($img);
+    //         } 
+    //         if(!$event->getId()) 
+    //         {
+    //             $event->setCreatedAt(new \DateTime());
+    //         }
+    //         $manager->persist($event);
+    //         $manager->flush();
+    //         return $this->redirectToRoute('event_show', ['id' => $event->getId()]);
+    //     }
         
-        return $this->render('event/create.html.twig',[
-            'formEvent' => $form->createView(),
-            'editMode' => $event->getId() !== null
-        ]);
+    //     return $this->render('event/create.html.twig',[
+    //         'formEvent' => $form->createView(),
+    //         'editMode' => $event->getId() !== null
+    //     ]);
 
-    }
+    // }
 
     /**
      * @Route("/event/{id}", name="event_show")
