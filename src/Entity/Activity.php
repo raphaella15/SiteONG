@@ -20,38 +20,38 @@ class Activity
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $activityName;
+    private $activityTitle;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $activityDetails;
+    private $activityRapports;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getActivityName(): ?string
+    public function getActivityTitle(): ?string
     {
-        return $this->activityName;
+        return $this->activityTitle;
     }
 
-    public function setActivityName(string $activityName): self
+    public function setActivityTitle(string $activityTitle): self
     {
-        $this->activityName = $activityName;
+        $this->activityTitle = $activityTitle;
 
         return $this;
     }
 
-    public function getActivityDetails(): ?string
+    public function getActivityRapports(): ?string
     {
-        return $this->activityDetails;
+        return $this->activityRapports;
     }
 
-    public function setActivityDetails(string $activityDetails): self
+    public function setActivityRapports(string $activityRapports): self
     {
-        $this->activityDetails = $activityDetails;
+        $this->activityRapports = $activityRapports;
 
         return $this;
     }

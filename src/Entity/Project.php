@@ -25,7 +25,17 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ProjectDetails;
+    private $ProjectRapports;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $projectDate;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $finished;
 
     public function getId(): ?int
     {
@@ -44,14 +54,38 @@ class Project
         return $this;
     }
 
-    public function getProjectDetails(): ?string
+    public function getProjectRapports(): ?string
     {
-        return $this->ProjectDetails;
+        return $this->ProjectRapports;
     }
 
-    public function setProjectDetails(string $ProjectDetails): self
+    public function setProjectRapports(string $ProjectRapports): self
     {
-        $this->ProjectDetails = $ProjectDetails;
+        $this->ProjectRapports = $ProjectRapports;
+
+        return $this;
+    }
+
+    public function getProjectDate(): ?\DateTimeInterface
+    {
+        return $this->projectDate;
+    }
+
+    public function setProjectDate(\DateTimeInterface $projectDate): self
+    {
+        $this->projectDate = $projectDate;
+
+        return $this;
+    }
+
+    public function isFinished(): ?bool
+    {
+        return $this->finished;
+    }
+
+    public function setFinished(bool $finished): self
+    {
+        $this->finished = $finished;
 
         return $this;
     }
